@@ -1,0 +1,1 @@
+<% @platforms.each do |platform|%><%= link_to platform.name, filter_admin_product_path(platform) %><% if @platforms.last %> | <%end%><%end%>

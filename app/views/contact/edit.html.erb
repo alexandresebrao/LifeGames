@@ -1,0 +1,18 @@
+<div class="row">
+
+<%= form_for @contact, url: edit_patch_contact_admin_path , html: { multipart: true } do |f| %>
+<table class="table">
+        <tbody>
+            <tr>
+                <td>Icon: <%= f.file_field :icon %></td>
+               </tr><tr>
+                <td>Type: <%= f.text_field :infotype %></td>
+                </tr><tr>
+                <td>Info: <%= f.text_field :info %></td>
+                </tr><td>
+                <%= f.submit 'Add' %></td>
+            </tr>
+        </tbody>
+        </table>
+<%end%>
+</div>

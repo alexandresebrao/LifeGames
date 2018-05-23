@@ -1,0 +1,84 @@
+<table class="table">
+	<thead>
+		<th></th>
+		<th>Product Name</th>
+		<th>Platform</th>
+		<th>Price</th>
+		<th>Discount</th>
+		<th>Final Price</th>
+	</thead>
+	<tbody>
+<% @order.products.each do |product| %>
+		<tr>
+			<td><%= image_tag product.coverbox.thumb %><td><%= product.name %></td><td><%= product.platform.name %></td><td>$<%= product.price_without_discount%></td><td><%= product.discount_percentage %>%</td><td><b>$<%= product.final_valor %></b></td>
+		</tr>
+<% end %>
+	</tbody>
+</table>
+
+<table class="table">
+	<thead>
+	<th>Status</th>
+	<th>TrackNo/Reason</th>
+	</thead>
+	<tbody>
+	<tr>
+	<td><%=@order.status %></td>
+	<td><%=@order.trackinfo %></td>
+	</tr>
+	</tbody>
+	</table>
+<div>
+<h2>Shipping Address</h2>
+</div>
+<table class="table">
+
+<tr>
+	<td>Street: <%= @order.address.number %> <%= @order.address.street %></td>
+</tr>
+<tr>
+	<td>City: <%= @order.address.city %> - <%= @order.address.province.name %></td>
+</tr>
+<tr>
+	<td>Postal Code: <%= @order.address.postalcode %></td>
+</tr>
+</table>
+<h2>Price description</h2>
+<table class="table">
+	<tbody>
+		<tr>
+			<td style="text-align:right">Total: $<%= @order.price %></td>
+		</tr>
+		<tr>
+			<td style="text-align:right">Shipping: Free!!!! Promotion</td>
+		</tr>
+		<tr class="danger" >
+			<td style="text-align:right">Tax (%<%= @tax %>): $<%=@order.taxprice %></td>
+		</tr>
+		<tr class="success" >
+			<td style="text-align:right">Total: $<%=@order.totalprice %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Payment Info: Creditcard</h2>
+<table class="table">
+<thead>
+<th>CC Name</th>
+<th>CC Number</th>
+<th>CC Expire Date</th>
+<th>CC Code</th>
+</thead>
+
+<tbody>
+		<td><%= @order.creditcardname %></td>
+		<td><%= @order.creditcard %></td>
+		<td><%= @order.creditcarddate %></td>
+		<td><%= @order.creditcardcode %></td>
+	</tbody>
+	</table>
+
+	
+<br>
+<br>
+<%= link_to 'Back', orders_admin_path %> | <%= link_to 'Edit', orders_modify_admin_path %>

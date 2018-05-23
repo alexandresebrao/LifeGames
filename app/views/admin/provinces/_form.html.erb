@@ -1,0 +1,34 @@
+<%
+if edit
+  url = admin_province_path(@province)
+  method = "patch"
+else
+  url = admin_provinces_path
+  method = "post"
+end
+%>
+ <%= form_for @province, url: url, method: method do |f| %>
+  <% if @province.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@province.errors.count, "error") %> prohibited this province from being saved:</h2>
+
+      <ul>
+      <% @province.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :tax %><br>
+    <%= f.number_field :tax %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

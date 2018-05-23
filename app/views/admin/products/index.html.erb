@@ -1,0 +1,46 @@
+<h1>Listing products</h1>
+
+<%= form_tag search_admin_product_path, method: "get", class: 'form-horizontal'   do %>
+   <div class="form-group">
+  <div class="col-lg-4">
+    <%= text_field_tag :name, nil, class: "form-control col-lg-4", placeholder: 'Search for Product Name'  %>
+  </div>
+</div>
+<% end %> 
+
+<h2>Filter by Platform</h2>
+<span><% @platforms.each do |platform|%><%= link_to platform.name, filter_admin_product_path(platform) %><% if @platforms.last != platform %> | <%end%><%end%></span>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Platform</th>
+      <th>Publisher</th>
+      <th>Price</th>
+      <th>Stock quantity</th>
+      <th>Discount percentage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.platform.name %></td>
+        <td><%= product.publisher.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.stock_quantity %></td>
+        <td><%= product.discount_percentage %></td>
+        <td><%= link_to 'Show', admin_product_path(product) %></td>
+        <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
+        <td><%= link_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_admin_product_path %>

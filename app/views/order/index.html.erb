@@ -1,0 +1,103 @@
+<h1> My cart</h1>
+<%= form_for @order, url:order_path, method: "Post" do |f| %>
+		<%if flash %>
+		    <table class='table'><tbody>
+		    <% flash.each do |name, msg| -%>
+      <tr><td class="danger"><%= msg.html_safe %></td></tr>
+    <%end%>
+    </tbody></table>
+    <% end -%>
+	<table class="table">
+		<thead>
+			<th></th>
+			<th>Product Name</th>
+			<th>Platform</th>
+			<th>Price</th>
+			<th>Discount</th>
+			<th>Final Price</th>
+		</thead>
+		<tbody>
+	<% @carts.each do |product| %>
+			<tr>
+				<td><%= image_tag product.coverbox.thumb %><td><%= product.name %></td><td><%= product.platform.name %></td><td>$<%= product.price_without_discount%></td><td><%= product.discount_percentage %>%</td><td><b>$<%= product.final_valor %></b></td>
+			</tr>
+	<% end %>
+		</tbody>
+	</table>
+
+<div>
+<h2>Shipping Address</h2>
+<%= radio_button_tag('newaddress', false, true) %>
+<%= label_tag('False', "Use my address") %>
+</div>
+<table class="table">
+<tr>
+	<td>Street: <%= @address.number %> <%= @address.street %></td>
+</tr>
+<tr>
+	<td>City: <%= @address.city %> - <%= @address.province.name %></td>
+</tr>
+<tr>
+	<td>Postal Code: <%= @address.postalcode %></td>
+</tr>
+</table>
+<%= radio_button_tag('newaddress', true) %>
+<%= label_tag('True', "I want to ship to new address") %>
+	<%= fields_for Address.new do |a| %>
+	<table class="table">
+	<tr>
+		<td><%= a.label :number, class: "col-lg-2 control-label" %> <%= a.text_field :number, class: "form-control"  %><br/></td>
+	</tr>
+	<tr>
+		<td><%= a.label :street, class: "col-lg-2 control-label" %> <%= a.text_field :street, class: "form-control"  %><br/></td>
+	</tr>
+	<tr>
+		<td><%= a.label :province_id, class: "col-lg-2 control-label" %><%= a.collection_select :province_id, @provinces, :id, :name , class: "form-control"%></td>
+	</tr>
+	<tr>
+		<td><%= a.label :city, class: "col-lg-2 control-label" %> <%= a.text_field :city, class: "form-control"  %> </td>
+	</tr>
+	<tr>
+		<td><%= a.label :postalcode, class: "col-lg-2 control-label" %> <%= a.text_field :postalcode, class: "form-control"  %><br/></td>
+	</tr>
+	</table>
+	<%end%>
+<h2>Price description</h2>
+<table class="table">
+	<tbody>
+		<tr>
+			<td style="text-align:right">Price: $<%= @total %></td>
+		</tr>
+		<tr>
+			<td style="text-align:right">Shipping: Free!!!! Promotion</td>
+		</tr>
+		<tr class="danger" >
+			<td style="text-align:right">Tax (%<%= @tax %> - <%=current_user.address.province.name %>) = $<%=@tax_value %> <span class="help-block">The value of tax can change if you ship to a new address</span></td>
+		</tr>
+			<tr class="success" >
+			<td style="text-align:right">Total (Price + Tax) = $<%=@totalprice %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Payment Info</h2>
+  <div class="field">
+    <%= f.label 'Credit Card Number:' %><br>
+    <%= f.text_field :creditcard %>
+  </div>
+  <div class="field">
+    <%= f.label 'Credit Card Name(as in the Card):' %><br>
+    <%= f.text_field :creditcardname %>
+  </div>
+  <div class="field">
+    <%= f.label 'Credit Card Expiry Date:' %><br>
+    <%= f.text_field :creditcarddate %> MMAA (No /)
+  </div>
+    <div class="field">
+    <%= f.label 'Credit Card Security Code:' %><br>
+    <%= f.text_field :creditcardcode %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Place Order' %>
+  </div>
+<% end %>

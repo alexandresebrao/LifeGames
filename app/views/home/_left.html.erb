@@ -1,0 +1,13 @@
+<a class="list-group-item active" abp="791">Platformas</a>
+
+<% categories_help.each do |categorie|%>
+	<%= link_to categorie.name, view_category_path(categorie), class: "list-group-item" %>
+<%end%>
+
+<p>
+</p>
+<a class="list-group-item active" abp="791">Distribuidoras</a>
+
+<% publishers_help.each do |publisher|%>
+    <%= link_to publisher.name, view_publisher_path(publisher), class: "list-group-item" %>
+<%end%>

@@ -1,0 +1,13 @@
+<%= form_for @order, url: orders_patch_admin_path(@order) do |f| %>
+    <div class="field">
+    <%= f.label :status %><br>
+    <%= f.select :status, options_for_select([['Processing','Processing'],['Declined','Declined'],['Finished','Finished']]) %>
+  </div>
+  <div class="field">
+    <%= f.label :trackinfo %><br>
+    <%= f.text_field :trackinfo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

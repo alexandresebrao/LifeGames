@@ -1,0 +1,22 @@
+        <div class="col-lg-10">
+
+        <div class="row col-lg-2 list-group">
+<%= render 'home/left' %>
+        </div>
+        <div class="row col-lg-8" style="margin-left:15px;margin-right:15px;">
+        <h2>Resultados</h2>
+        <div class="row">
+        <% @products.each do |product| %>
+            <%= render partial: 'home/product', object: product %>
+        <%end%>
+        <%if @products.count == 0 %>
+        	<h3>Nenhum produto encontrado :(</h3>
+        <%end%>
+        </div>
+        </div>
+        <div class="row col-lg-2">
+        	<div>
+        	 <% if current_user %>Bem vindo, <%=current_user.username%> (<a href="/signed_out">Sair</a>)<%else%><%= render 'authentication/sign_in' %><%end%></a><p></p>
+        	</div>
+        </div>
+        </div>

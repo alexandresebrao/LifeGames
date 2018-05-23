@@ -1,0 +1,25 @@
+        <div class="col-lg-10">
+
+        <div class="row col-lg-2 list-group">
+            <%= render 'home/left' %>        </div>
+        <div class="row col-lg-8" style="margin-left:15px;margin-right:15px;">
+        <h2>Latest Products:</h2>
+        <div class="row">
+        <table>
+        <tbody>
+        <% @contacts.each do |contact|%>
+            <tr>
+                <td><%= image_tag contact.icon.url %></td>
+                <td><%= contact.type %></td>
+                <td><%= contact.info %></td>
+            </tr>
+            <%end%>
+        </tbody>
+        </table>
+        </div>
+        <div class="row col-lg-2">
+        	<div>
+        	 <% if current_user %>Welcome back, <%=current_user.username%> (<a href="/signed_out">LogOut</a>)<%else%><%= render 'authentication/sign_in' %><%end%></a><p></p>
+        	</div>
+        </div>
+        </div>

@@ -1,0 +1,101 @@
+<div class="row">
+          <div class="col-lg-10">
+
+<div class="well">
+  <%= form_for @user, url: register_path, method: "post", html: {class: 'form-horizontal'} do |f| %>
+
+    <fieldset>
+      <legend>Registrar!</legend>
+      <div class="form-group">
+        <%= f.label 'Usuário:', class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= f.text_field :username, class: "form-control"  %>
+          <span class="help-block" style="color:red"><%= show_field_error(@user, :username) %></span>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <%= f.label 'Email:', class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= f.text_field :email, class: "form-control"  %>
+          <span class="help-block" style="color:red"><%= show_field_error(@user, :email) %></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label 'Primeiro Nome:', class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= f.text_field :fname, class: "form-control"  %>
+          <span class="help-block" style="color:red"><%= show_field_error(@user, :fname) %></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label 'Ultimo Nome:', class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= f.text_field :lname, class: "form-control"  %>
+          <span class="help-block" style="color:red"><%= show_field_error(@user, :lname) %></span>
+        </div>
+      </div>
+     <div class="form-group">
+        <%= f.label 'Senha:', class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= f.password_field :password, class: "form-control"  %>
+          <span class="help-block" style="color:red"><%= show_field_error(@user, :password) %></span>
+        </div>
+      </div>
+     <div class="form-group">
+        <%= f.label 'Confirmar Senha:', class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= f.password_field :password_confirmation, class: "form-control"  %>
+          <span class="help-block" style="color:red"><%= show_field_error(@user, :password_confirmation) %></span>
+        </div>
+      </div>
+
+    <legend>Endereço</legend>
+    <%= fields_for @address do |a| %>
+
+
+
+
+       <div class="form-group">
+        <%= a.label :street, class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= a.text_field :street, class: "form-control"  %><span class="help-block" style="color:red"><%= show_field_error(@address, :street) %></span>
+        </div>
+      </div>
+      <div class="form-group">
+       <%= a.label "Número", class: "col-lg-2 control-label" %><br/>
+       <div class="col-lg-2">
+         <%= a.text_field :number, class: "form-control"  %><span class="help-block" style="color:red"><%= show_field_error(@address, :number) %></span>
+       </div>
+     </div>
+
+       <div class="form-group">
+        <%= a.label "Estado", class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= a.collection_select :province_id, @provinces, :id, :name , class: "form-control"%>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <%= a.label "Cidade", class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= a.text_field :city, class: "form-control"  %><span class="help-block" style="color:red"><%= show_field_error(@address, :city) %></span>
+        </div>
+      </div>
+       <div class="form-group">
+        <%= a.label "Cep", class: "col-lg-2 control-label" %><br/>
+        <div class="col-lg-10">
+          <%= a.text_field :postalcode, class: "form-control"  %><span class="help-block" style="color:red"><%= show_field_error(@address, :postalcode) %></span>
+        </div>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= f.submit 'Registrar', class: "btn btn-primary"%>
+        <%= f.submit 'Limpar', :type => 'reset', class: "btn btn-default"%>
+      </div>
+    </div>
+  </fieldset>
+  <% end %>
+</div>
+</div>

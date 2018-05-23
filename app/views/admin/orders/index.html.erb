@@ -1,0 +1,32 @@
+<h1>Listing Orders</h1>
+
+<h2>Filter by Status</h2>
+<span><%= link_to 'Processing', orders_filter_admin_path('Processing') %> | <%= link_to 'Declined', orders_filter_admin_path('Declined') %> | <%= link_to 'Finished', orders_filter_admin_path('Finished') %></span>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order No</th>
+      <th>User</th>
+      <th>Status</th>
+      <th>Total Price</th>
+      <th>Track No</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user.username %></td>
+        <td><%= order.status %></td>
+        <td><%= order.totalprice %></td>
+        <%if order.trackinfo %><td><%= order.trackinfo %></td><%else%><td></td><%end%>
+        <td><%= link_to 'Modify Status', orders_modify_admin_path(order) %></td>
+        <td><%= link_to 'Show', orders_show_admin_path(order) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

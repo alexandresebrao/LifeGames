@@ -1,0 +1,27 @@
+        <div class="col-lg-10">
+
+        <div class="row col-lg-2 list-group">
+<%= render 'home/left' %>
+        </div>
+        <div class="row col-lg-8" style="margin-left:15px;margin-right:15px;">
+        <div class="row">
+        <div class="col-lg-6">
+            <%= image_tag @product.coverbox.box %>
+        </div>
+        <div class="col-lg-5 well">
+            <h2><b><%= @product.name %></b></h2>
+            <br><%if @product.discount_percentage >0 %>R$<span style:"text-decoration: line-through"><%= @product.price %></span> Desconto (<%= @product.discount_percentage %>%) <br> <h3>R$<%= @product.final_valor%></h3><%else%><h3>$<%= @product.price %></h3><%end%>
+            <br><br><%if @product.stock_quantity == 0%><span>Não tem em estoque :(</span><%else%><%= link_to 'Adicionar ao carrinho', add_cart_path(@product) , class: "btn btn-primary"%> <%end%>
+        </div>
+        </div>
+        <div class="row">
+        <h2>Descrição</h2>
+        <%= @product.description %>
+        </div>
+        </div>
+        <div class="row col-lg-2">
+        	<div>
+        	 <% if current_user %>Bem vindo, <%=current_user.username%> (<a href="/signed_out">Sair</a>)<%else%><%= render 'authentication/sign_in' %><%end%></a><p></p>
+        	</div>
+        </div>
+        </div>

@@ -1,0 +1,30 @@
+<%
+if edit
+  url = admin_publisher_path(@publisher)
+  method = "patch"
+else
+  url = admin_publishers_path
+  method = "post"
+end
+%>
+ <%= form_for @publisher, url: url, method: method do |f| %>
+  <% if @publisher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@publisher.errors.count, "error") %> prohibited this publisher from being saved:</h2>
+
+      <ul>
+      <% @publisher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

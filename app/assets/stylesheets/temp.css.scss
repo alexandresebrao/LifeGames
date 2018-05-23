@@ -1,0 +1,157 @@
+
+body {
+    padding-top: 70px;
+}
+#banner {
+    border-bottom: medium none;
+    min-height: 300px;
+}
+.page-header h1 {
+    font-size: 4em;
+}
+.bs-docs-section {
+    margin-top: 8em;
+}
+.bs-component {
+    position: relative;
+}
+.bs-component .modal {
+    bottom: auto;
+    display: block;
+    left: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+    z-index: 1;
+}
+.bs-component .modal-dialog {
+    width: 90%;
+}
+.bs-component .popover {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    width: 220px;
+}
+#source-button {
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+.nav-tabs {
+    margin-bottom: 15px;
+}
+.progress {
+    margin-bottom: 10px;
+}
+footer {
+    margin: 5em 0;
+}
+footer li {
+    float: left;
+    margin-bottom: 1.5em;
+    margin-right: 1.5em;
+}
+footer p {
+    clear: left;
+    margin-bottom: 0;
+}
+.splash {
+    background-color: #141d27;
+    color: #fff;
+    padding: 5em 0 2em;
+    text-align: center;
+}
+.splash .logo {
+    width: 160px;
+}
+.splash h1 {
+    font-size: 3em;
+}
+.splash #social {
+    margin: 2em 0;
+}
+.splash .alert {
+    margin: 2em 0;
+}
+.section-tout {
+    background-color: #eaf1f1;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 4em 0 3em;
+}
+.section-tout .fa {
+    margin-right: 0.5em;
+}
+.section-tout p {
+    margin-bottom: 3em;
+}
+.section-preview {
+    padding: 4em 0;
+}
+.section-preview .preview {
+    background-color: #eaf1f1;
+    margin-bottom: 4em;
+}
+.section-preview .preview .image {
+    position: relative;
+}
+.section-preview .preview .image:before {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    content: "";
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.section-preview .preview .options {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color rgba(0, 0, 0, 0.05) rgba(0, 0, 0, 0.05);
+    border-image: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    padding: 1em 2em 2em;
+    text-align: center;
+}
+.section-preview .preview .options p {
+    margin-bottom: 2em;
+}
+.section-preview .dropdown-menu {
+    text-align: left;
+}
+.section-preview .lead {
+    margin-bottom: 2em;
+}
+@media (max-width: 767px) {
+.section-preview .image img {
+    width: 100%;
+}
+}
+.sponsor {
+    text-align: center;
+}
+.sponsor a:hover {
+    text-decoration: none;
+}
+@media (max-width: 767px) {
+.splash {
+    padding-top: 4em;
+}
+.splash .logo {
+    width: 100px;
+}
+.splash h1 {
+    font-size: 2em;
+}
+#banner {
+    margin-bottom: 2em;
+    text-align: center;
+}
+}

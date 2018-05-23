@@ -1,0 +1,37 @@
+<div class="row">
+	<h2>Address</h2>
+	<table class="table">
+	<tbody>
+	<tr><td>Street: <%= current_user.address.number %> <%= current_user.address.street%></td></tr>
+	<tr><td>Street: <%= current_user.address.city %> <%= current_user.address.province.name%></td></tr>
+	<tr><td>Postal Code: <%= current_user.address.postalcode %></td></tr>
+	<tr><td><%= link_to 'Change Address', change_address_path , class: "btn btn-primary"%></td></tr>
+	</tbody>
+	</table>
+</div>
+<div class="row">
+	<h2>Orders</h2>
+<table class="table">
+		<thead>
+			<tr>
+					<td>Order Number</td>
+					<td>Total Price</td>
+					<td>Status</td>
+					<td>Date</td>
+					<td>Options</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% current_user.orders.each do |order| %>
+					<tr>
+							<td><%= order.id %></td>
+							<td><%= format_number order.totalprice %></td>
+							<td><%= order.status %></td>
+							<td><%= order.created_at %></td>
+							<td><%= link_to 'Show', view_order_path(order) %></td>
+					</tr>
+				<%end%>
+				</tbody>
+			</table>
+		</div>
+</div>

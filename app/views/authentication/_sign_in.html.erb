@@ -1,0 +1,14 @@
+<% flash.each do |name, msg| %>
+<%= content_tag :div, msg, :id => "flash_#{name}", style: "color:red" %>
+<%end%>
+<%= form_tag sign_in_path, method: "post", class: 'bs-component'   do %>
+  <div class="form-group">
+    <%= label_tag 'usuário ou email:', nil, class: "control-label" %><br />
+    <%= text_field_tag :username, nil, class: "control-label"%>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'Password:', nil, class: "control-label" %><br />
+    <%= password_field_tag :password, nil, class: "control-label"%>
+  </div>
+    <%= submit_tag 'Logar', class: "btn btn-default" %> <%=link_to 'Registrar', register_path, class:'btn btn-primary'%>
+<% end %>
